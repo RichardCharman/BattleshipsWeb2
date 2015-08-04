@@ -20,19 +20,16 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/play' do
     @name=params[:name]
+    $game = Game.new Player, Board
+    $game.player_2.place_ship Ship.cruiser, :A1
     erb :game
   end
 
-  get '/start_game' do
-    $game = Game.new Player, Board
-    erb :start_game
-  end
-
   get '/shoot' do
+#    $game.player_1.shoot @coordinates
     erb :take_a_shot
   end
-
-  
+ 
   # start the server if ruby file executed directly
   run! if app_file == $0
 

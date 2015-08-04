@@ -1,10 +1,23 @@
 <div>
+  <center>
   <% if @name != "" %>
-  Hello, <%= @name %>
+  <b><u>Hello, <%= @name %>. This is your board.</u></b>
   <% else %>
-  Hello, Player 1
+  <b><u>Hello, Player 1. This is your board.</u></b>
   <% end %>
-<form action="/start_game">
-  <input type="submit" value ="Start Game">
-</form>
-</div>
+  <pre>
+  <%= $game.own_board_view($game.player_1) %>
+  </pre>
+  <p>
+    <b><u>Enter coordinates to fire upon Player 2's board</u></b>
+  </p>
+  <form action="/shoot">
+    <input type="text" name="coordinates">
+    <input type="submit" value="Fire">
+  </form>
+    <b><u>This is Player 2's board</u></b><br />(which clearly won't be here but<br />I'm just showing it for reference right now,<br />and to prove a boat has been placed on the board)
+    <pre>
+  <%= $game.own_board_view($game.player_2) %>
+  </pre>
+  </center>
+</div> 
