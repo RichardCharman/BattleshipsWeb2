@@ -1,0 +1,53 @@
+<div>
+  <center>
+    <% if @name %>
+      <% if @name != "" %>
+        <% session[:player2] = @name %>
+      <% else %>
+        <% session[:player2] = "Player 2" %>
+      <% end %>
+    <% end %>
+      <h2> <%= session[:player1] %> VS <%= session[:player2] %> </h2>
+    <br> <% if (session[:game].own_board_view (session[:game].player_1)) == (session[:game].opponent_board_view (session[:game].player_2)) %>
+    <%= session[:player1] %> please select ship locations.
+    <br />
+    <form action="/pvp/placeships" method="post">
+      <% else %>
+    <%= session[:player2] %> please select ship locations.
+    <br />
+    <form action="/pvp/play" method="post"> 
+      <% end %>  
+      Aircraft Carrier: 
+      <input type="password" name="location1">
+      <select name="direction1">
+      <option value = "horizontally">horizontally</option>
+      <option value = "vertically">vertically</option>
+      </select><br>
+      Battleship: 
+      <input type="password" name="location2">
+      <select name="direction2">
+      <option value = "horizontally">horizontally</option>
+      <option value = "vertically">vertically</option>
+      </select><br>
+      Cruiser: 
+      <input type="password" name="location3">
+      <select name="direction3">
+      <option value = "horizontally">horizontally</option>
+      <option value = "vertically">vertically</option>
+      </select><br>  
+      Destroyer: 
+      <input type="password" name="location4">
+      <select name="direction4">
+      <option value = "horizontally">horizontally</option>
+      <option value = "vertically">vertically</option>
+      </select><br> 
+      Submarine: 
+      <input type="password" name="location5">
+      <select name="direction5">
+      <option value = "horizontally">horizontally</option>
+      <option value = "vertically">vertically</option>
+      </select><br>      
+      <input type="submit" value ="Place">      
+    </form>
+      </center>
+    </div>

@@ -32,7 +32,7 @@ feature 'Starting a new game' do
     expect(page).to have_content "Player 1 VS #{our_name}"
   end
 end
-feature 'Playing against opponent' do
+feature 'Playing against computer' do
   scenario 'I can enter coordinates' do
     visit '/play'
     fill_in "coordinates", with: "A1"
@@ -63,5 +63,72 @@ feature 'Playing against opponent' do
     expect(page).to have_link "New Game"
     click_link "New Game"
     expect(page).to have_content "Are you ready to play Battleships?"
+  end
+end
+feature 'Playing against human opponent' do
+  scenario 'Player 1 can place ships' do
+    visit '/name_set'
+    click_button 'Submit'
+    click_link "PVP"
+    click_button 'Submit'
+    expect(page).to have_content "Player 1 please select ship locations."
+    expect(page).to have_content "Aircraft Carrier: "
+    fill_in "location1", with: "A1"
+    select "vertically", :from => "direction1"
+    expect(page).to have_content "Battleship: "
+    fill_in "location2", with: "D5"
+    select "horizontally", :from => "direction2"
+    expect(page).to have_content "Cruiser: "
+    fill_in "location3", with: "C1"
+    select "vertically", :from => "direction3"
+    expect(page).to have_content "Destroyer: "
+    fill_in "location4", with: "I5"
+    select "horizontally", :from => "direction4"
+    expect(page).to have_content "Submarine: "
+    fill_in "location5", with: "J1"
+    select "horizontally", :from => "direction5"
+    click_button 'Place'
+    expect(page).to have_content "Player 2 please select ship locations."
+  end
+  scenario 'Player 2 can place ships' do
+    visit '/name_set'
+    click_button 'Submit'
+    click_link "PVP"
+    click_button 'Submit'
+    expect(page).to have_content "Player 1 please select ship locations."
+    expect(page).to have_content "Aircraft Carrier: "
+    fill_in "location1", with: "A1"
+    select "vertically", :from => "direction1"
+    expect(page).to have_content "Battleship: "
+    fill_in "location2", with: "D5"
+    select "horizontally", :from => "direction2"
+    expect(page).to have_content "Cruiser: "
+    fill_in "location3", with: "C1"
+    select "vertically", :from => "direction3"
+    expect(page).to have_content "Destroyer: "
+    fill_in "location4", with: "I5"
+    select "horizontally", :from => "direction4"
+    expect(page).to have_content "Submarine: "
+    fill_in "location5", with: "J1"
+    select "horizontally", :from => "direction5"
+    click_button 'Place'
+    expect(page).to have_content "Player 2 please select ship locations."
+    expect(page).to have_content "Aircraft Carrier: "
+    fill_in "location1", with: "A1"
+    select "vertically", :from => "direction1"
+    expect(page).to have_content "Battleship: "
+    fill_in "location2", with: "D5"
+    select "horizontally", :from => "direction2"
+    expect(page).to have_content "Cruiser: "
+    fill_in "location3", with: "C1"
+    select "vertically", :from => "direction3"
+    expect(page).to have_content "Destroyer: "
+    fill_in "location4", with: "I5"
+    select "horizontally", :from => "direction4"
+    expect(page).to have_content "Submarine: "
+    fill_in "location5", with: "J1"
+    select "horizontally", :from => "direction5"
+    click_button 'Place'
+    expect(page).to have_content "Who will fire first?"
   end
 end
