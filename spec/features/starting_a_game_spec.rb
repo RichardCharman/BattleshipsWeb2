@@ -95,20 +95,14 @@ feature 'Playing against human opponent' do
     click_button 'Submit'
     click_link "PVP"
     click_button 'Submit'
-    expect(page).to have_content "Player 1 please select ship locations."
-    expect(page).to have_content "Aircraft Carrier: "
     fill_in "location1", with: "A1"
     select "vertically", :from => "direction1"
-    expect(page).to have_content "Battleship: "
     fill_in "location2", with: "D5"
     select "horizontally", :from => "direction2"
-    expect(page).to have_content "Cruiser: "
     fill_in "location3", with: "C1"
     select "vertically", :from => "direction3"
-    expect(page).to have_content "Destroyer: "
     fill_in "location4", with: "I5"
     select "horizontally", :from => "direction4"
-    expect(page).to have_content "Submarine: "
     fill_in "location5", with: "J1"
     select "horizontally", :from => "direction5"
     click_button 'Place'
@@ -130,5 +124,35 @@ feature 'Playing against human opponent' do
     select "horizontally", :from => "direction5"
     click_button 'Place'
     expect(page).to have_content "Who will fire first?"
+  end
+  scenario "can select who goes first" do
+    visit '/name_set'
+    click_button 'Submit'
+    click_link "PVP"
+    click_button 'Submit'
+    fill_in "location1", with: "A1"
+    select "vertically", :from => "direction1"
+    fill_in "location2", with: "D5"
+    select "horizontally", :from => "direction2"
+    fill_in "location3", with: "C1"
+    select "vertically", :from => "direction3"
+    fill_in "location4", with: "I5"
+    select "horizontally", :from => "direction4"
+    fill_in "location5", with: "J1"
+    select "horizontally", :from => "direction5"
+    click_button 'Place'
+    fill_in "location1", with: "A1"
+    select "vertically", :from => "direction1"
+    fill_in "location2", with: "D5"
+    select "horizontally", :from => "direction2"
+    fill_in "location3", with: "C1"
+    select "vertically", :from => "direction3"
+    fill_in "location4", with: "I5"
+    select "horizontally", :from => "direction4"
+    fill_in "location5", with: "J1"
+    select "horizontally", :from => "direction5"
+    click_button 'Place'
+    click_button "Player 1"
+    expect(page).to have_content "Player 1's turn"
   end
 end

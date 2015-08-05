@@ -1,0 +1,10 @@
+<div bgcolor="456342">
+  <center>
+    "Who will fire first?"
+    <br>
+    <form action="/pvp/play/p1turn" method="post">
+    <input type="submit" value=<%= session[:player1] %>></input></form>
+    <form action="/pvp/play/p2turn" method="post">
+    <input type="submit" value=<%= session[:player2] %>></input></form>     
+  </center>
+</div>
