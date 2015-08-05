@@ -23,7 +23,7 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/play' do   
     session[:game] = Game.new Player, Board
-    session[:game].player_2.place_ship Ship.cruiser, :A1
+    session[:game].player_2.place_ship Ship.battleship, :A1
     erb :game
   end
 

@@ -1,18 +1,28 @@
 <div>
   <center>
-    <b><u>This is your opponents board.</u></b>
-    <% if @coordinates %> 
-      <br><br><%= session[:game].player_1.shoot @coordinates.to_sym %>
-    <% end %>
-    <% if session[:game].has_winner? %>
-      <br> Congratulations. You win!
-      <br> <a href="/">New Game</a>
-    <% end %>
-    <pre> <%= session[:game].opponent_board_view(session[:game].player_1) %> </pre>
-    <p> <b><u>Enter coordinates to fire upon Player 2's board</u></b> </p>
+    <div style='width: 700px; height: 600px; border: 3px solid red; text-align:center; '>
+      <center>
+        <p><img src='http://1.bp.blogspot.com/-hDO9c3crjNQ/VcJta4MwPEI/AAAAAAAAQrA/FdpJZ1BA_j4/s1600/battleships4.jpg' width="550"></p>
+    <font size="6"><strong><u>Try to sink the computer's battleship</u></strong></font>
+    <div style="float: left; width: 300px;"> 
+      <p><font size="4"><strong><u>Enter coordinates to fire</u></strong></font></p>
     <form action="/play" method="post" >
       <input type="text" name="coordinates">
       <input type="submit" value="Fire">
     </form>
+    <% if @coordinates %> 
+      <font size="8"; color="red"><strong><%= session[:game].player_1.shoot @coordinates.to_sym %></strong></font>
+    <% end %>
+    <% if session[:game].has_winner? %>
+      <br><font size="6"; color="blue"><strong>Congratulations.<br />You win!</strong></font>
+      <br><font size="5"><a href="/">New Game</a></font>
+    <% end %>
+      
+        </div>
+       <div style="float: left; width: 300px;"> 
+        <pre> <%= session[:game].opponent_board_view(session[:game].player_1) %> </pre>
+        </div>
+      </center>
+    </div>
   </center>
 </div> 

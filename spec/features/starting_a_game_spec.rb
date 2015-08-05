@@ -19,7 +19,7 @@ feature 'Starting a new game' do
     visit '/name_set'
     click_button 'Submit'
     click_link "VS Computer"
-    expect(page).to have_content "Enter coordinates to fire upon"
+    expect(page).to have_content "Enter coordinates to fire"
   end
   scenario "I can start a game against a human opponent" do
     visit '/name_set'
@@ -50,7 +50,9 @@ feature 'Playing against computer' do
     click_button 'Fire'
     fill_in "coordinates", with: "C1"
     click_button 'Fire'
-    expect(page).to have_content "Congratulations. You win!"
+    fill_in "coordinates", with: "D1"
+    click_button 'Fire'
+    expect(page).to have_content "Congratulations."
   end
   scenario 'I can start a new game after game ended' do
     visit '/play'
@@ -59,6 +61,8 @@ feature 'Playing against computer' do
     fill_in "coordinates", with: "B1"
     click_button 'Fire'
     fill_in "coordinates", with: "C1"
+    click_button 'Fire'
+    fill_in "coordinates", with: "D1"
     click_button 'Fire'
     expect(page).to have_link "New Game"
     click_link "New Game"

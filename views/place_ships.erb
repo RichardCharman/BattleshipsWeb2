@@ -1,5 +1,8 @@
 <div>
   <center>
+    <div style='width: 700px; height: 600px; border: 3px solid red; text-align:center; '>
+      <center>
+              <p><img src='http://1.bp.blogspot.com/-hDO9c3crjNQ/VcJta4MwPEI/AAAAAAAAQrA/FdpJZ1BA_j4/s1600/battleships4.jpg' width="550"></p>
     <% if @name %>
       <% if @name != "" %>
         <% session[:player2] = @name %>
@@ -7,47 +10,58 @@
         <% session[:player2] = "Player 2" %>
       <% end %>
     <% end %>
-      <h2> <%= session[:player1] %> VS <%= session[:player2] %> </h2>
-    <br> <% if (session[:game].own_board_view (session[:game].player_1)) == (session[:game].opponent_board_view (session[:game].player_2)) %>
-    <%= session[:player1] %> please select ship locations.
-    <br />
+       <p><font size="6" color="red"><strong><u><%= session[:player1] %> VS <%= session[:player2] %></u></strong></font></p>
+    <% if (session[:game].own_board_view (session[:game].player_1)) == (session[:game].opponent_board_view (session[:game].player_2)) %>
+        <p><font size="6" color="blue"><strong><%= session[:player1] %> please select ship locations.</strong></font></p>
     <form action="/pvp/placeships" method="post">
       <% else %>
-    <%= session[:player2] %> please select ship locations.
+      <p><font size="6" color="blue"><strong><%= session[:player2] %> please select ship locations.</strong></font></p>
     <br />
     <form action="/pvp/play" method="post"> 
-      <% end %>  
+      <% end %>
+      <div style="float: left; width: 400px;">  
+        <center>
+      <font size="4">
       Aircraft Carrier: 
       <input type="password" name="location1">
       <select name="direction1">
       <option value = "horizontally">horizontally</option>
       <option value = "vertically">vertically</option>
       </select><br>
-      Battleship: 
+      Battleship: &nbsp; &nbsp; &nbsp; &nbsp;
       <input type="password" name="location2">
       <select name="direction2">
       <option value = "horizontally">horizontally</option>
       <option value = "vertically">vertically</option>
       </select><br>
-      Cruiser: 
+      Cruiser:  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
       <input type="password" name="location3">
       <select name="direction3">
       <option value = "horizontally">horizontally</option>
       <option value = "vertically">vertically</option>
       </select><br>  
-      Destroyer: 
+      Destroyer:  &nbsp; &nbsp; &nbsp; &nbsp;
       <input type="password" name="location4">
       <select name="direction4">
       <option value = "horizontally">horizontally</option>
       <option value = "vertically">vertically</option>
       </select><br> 
-      Submarine: 
+      Submarine:  &nbsp; &nbsp; &nbsp; &nbsp;
       <input type="password" name="location5">
       <select name="direction5">
       <option value = "horizontally">horizontally</option>
       <option value = "vertically">vertically</option>
-      </select><br>      
-      <input type="submit" value ="Place">      
+      </select>
+      </font>      
+      <p><input type="submit" value ="Place"></p>
     </form>
+        </center>
+      </div>
+     <div style="float: left; width: 300px;">  
+   <img src='http://2.bp.blogspot.com/-yqISl7DHnvA/VcJ1oMsGRjI/AAAAAAAAQrQ/78Yilod11UU/s1600/battleships5.jpg' width="250">
+      </div>
+
+      </center>
+    </div>
       </center>
     </div>
