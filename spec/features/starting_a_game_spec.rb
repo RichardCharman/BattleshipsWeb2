@@ -16,8 +16,11 @@ feature 'Starting a new game' do
     click_button 'Submit'
     expect(page).to have_content "Hello, Player 1"
   end
-  scenario 'Starts a new game' do
-    visit '/play'
+  scenario "I can choose to start a game against a computer" do
+    visit '/'
+    click_link 'New Game'
+    click_button 'Submit'
+    click_link "VS Computer"
     expect(page).to have_content "Enter coordinates to fire upon"
   end
 end

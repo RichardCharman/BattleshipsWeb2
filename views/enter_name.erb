@@ -1,9 +1,18 @@
 <div>
   <center>
+    <% if @name %>
+      <% if @name != "" %>
+  <b><u>Hello, <%= @name %></u></b>
+  <% else %>
+  <b><u>Hello, Player 1</u></b>
+  <% end %>
+    <a href="/play">VS Computer</a>
+    <% else %>
     <h2> Let's get started - What's your name? </h2>
-<form action="/play">
+<form action="/name_set">
   <input type="text" name="name">
   <input type="submit" value ="Submit">
 </form>
+    <% end %>
   </center>
 </div>

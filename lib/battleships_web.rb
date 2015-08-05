@@ -15,19 +15,20 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/name_set' do
+    @name= params[:name]
     erb :enter_name
   end
 
   get '/play' do
-    @name=params[:name]
+    
     $game = Game.new Player, Board
     $game.player_2.place_ship Ship.cruiser, :A1
     erb :game
   end
 
-  post "/playing" do
+  post "/play" do
     @coordinates = params[:coordinates]
-    erb :play
+    erb :game
   end
  
   # start the server if ruby file executed directly

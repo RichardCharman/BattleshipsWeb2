@@ -1,9 +1,13 @@
 <div>
   <center>
   <% if @name != "" %>
-  <b><u>Hello, <%= @name %>. This is your board.</u></b>
+  <b><u>This is your opponents board.</u></b>
   <% else %>
-  <b><u>Hello, Player 1. This is your opponents board.</u></b>
+  <b><u>This is your opponents board.</u></b>
+  <% end %>
+  <% if @coordinates %> 
+   <br><br>
+  <%= $game.player_1.shoot @coordinates.to_sym %>
   <% end %>
   <pre>
   <%= $game.opponent_board_view($game.player_1) %>
@@ -11,7 +15,7 @@
   <p>
     <b><u>Enter coordinates to fire upon Player 2's board</u></b>
   </p>
-  <form action="/playing" method="post" >
+  <form action="/play" method="post" >
     <input type="text" name="coordinates">
     <input type="submit" value="Fire">
   </form>
