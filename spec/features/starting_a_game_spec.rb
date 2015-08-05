@@ -156,7 +156,7 @@ feature 'Playing against human opponent' do
     fill_in "location5", with: "J1"
     select "horizontally", :from => "direction5"
     click_button 'Place'
-    click_button "Player 1"
+    click_link "Player 1"
     expect(page).to have_content "Player 1's turn"
   end
 end

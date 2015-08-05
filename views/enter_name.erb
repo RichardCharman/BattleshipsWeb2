@@ -1,28 +1,21 @@
-<div>
-  <center>
-    <div style='width: 700px; height: 600px; border: 3px solid red; text-align:center; '>
-      <center>
+<div style='width: 700px; height: 600px; border: 3px solid red; text-align:center; margin:0 auto; '>
   <% if @name %>
-      <% if @name != "" %>
+     <% if @name != "" %>
         <font size="6"><strong><u>Hello, <%= @name %></u></strong></font>
         <% session[:player1] = @name %>
-      <% else %>
+     <% else %>
         <font size="6"><strong><u>Hello, Player 1</u></strong></font>
         <% session[:player1] = "Player 1" %>
-      <% end %>
-        <br /><font size="4">Choose your game type:</font>
+     <% end %>
+    <br /><font size="4">Choose your game type:</font>
     <br><a href="/play">VS Computer</a>
     <br><a href="/pvp">PVP</a>
-    <% else %>
-        <font size="6"><strong>Let's get started - What's your name?</strong></font>
-        <p>
-      <form action="/name_set">
-        <input type="text" name="name">
-        <input type="submit" value ="Submit">
-      </form>
-    <% end %>
-     <p><img src='http://3.bp.blogspot.com/-qefib-x68zs/VcJbBh1Sp7I/AAAAAAAAQqw/uClJPCwmLdk/s1600/battleships2.jpg' width="480"></p>
-      </center>
-    </div>
-  </center>
+  <% else %>
+    <font size="6"><strong>Let's get started - What's your name?</strong></font>
+    <p><form action="/name_set">
+    <input type="text" name="name">
+    <input type="submit" value ="Submit">
+    </form></p>
+  <% end %>
+<p><img src='http://3.bp.blogspot.com/-qefib-x68zs/VcJbBh1Sp7I/AAAAAAAAQqw/uClJPCwmLdk/s1600/battleships2.jpg' width="480"></p>
 <div>

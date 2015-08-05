@@ -59,6 +59,12 @@ class BattleshipsWeb < Sinatra::Base
     session[:game].player_2.place_ship Ship.submarine, params[:location5].capitalize.to_sym, params[:direction5].to_sym
     erb :play
   end
+  
+  post '/pvp/play/p1turn' do
+  end
+  
+  post '/pvp/play/p2turn' do
+  end  
   # start the server if ruby file executed directly
   run! if app_file == $0
 
