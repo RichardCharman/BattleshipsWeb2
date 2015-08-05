@@ -1,32 +1,23 @@
 <div>
   <center>
-  <% if @name != "" %>
-  <b><u>This is your opponents board.</u></b>
-  <% else %>
-  <b><u>This is your opponents board.</u></b>
-  <% end %>
-  <% if @coordinates %> 
-   <br><br>
-  <%= $game.player_1.shoot @coordinates.to_sym %>
-  <% end %>
-    <% if $game.has_winner? %>
-    Congratulations. You win!
-    <br>
-    <a href="/">New Game</a>
+    <b><u>This is your opponents board.</u></b>
+    <% if @coordinates %> 
+      <br><br><%= $game.player_1.shoot @coordinates.to_sym %>
     <% end %>
-  <pre>
-  <%= $game.opponent_board_view($game.player_1) %>
-  </pre>
-  <p>
-    <b><u>Enter coordinates to fire upon Player 2's board</u></b>
-  </p>
-  <form action="/play" method="post" >
-    <input type="text" name="coordinates">
-    <input type="submit" value="Fire">
-  </form>
-    <b><u>This is Player 2's board</u></b><br />(which clearly won't be here but<br />I'm just showing it for reference right now,<br />and to prove a boat has been placed on the board)
+    <% if $game.has_winner? %>
+      <br> Congratulations. You win!
+      <br> <a href="/">New Game</a>
+    <% end %>
+    <pre> <%= $game.opponent_board_view($game.player_1) %> </pre>
+    <p> <b><u>Enter coordinates to fire upon Player 2's board</u></b> </p>
+    <form action="/play" method="post" >
+      <input type="text" name="coordinates">
+      <input type="submit" value="Fire">
+    </form>
+    <b><u>This is Player 2's board</u></b>
+    <br>(which clearly won't be here but<br>I'm just showing it for reference right now,<br>and to prove a boat has been placed on the board)
     <pre>
-  <%= $game.own_board_view($game.player_2) %>
-  </pre>
+      <%= $game.own_board_view($game.player_2) %>
+    </pre>
   </center>
 </div> 

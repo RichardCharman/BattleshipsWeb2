@@ -11,14 +11,12 @@ feature 'Starting a new game' do
     expect(page).to have_content "Hello, #{our_name}"
   end
   scenario 'Gives default name if none submitted' do
-    visit '/'
-    click_link 'New Game'
+    visit '/name_set'
     click_button 'Submit'
     expect(page).to have_content "Hello, Player 1"
   end
   scenario "I can choose to start a game against a computer" do
-    visit '/'
-    click_link 'New Game'
+    visit '/name_set'
     click_button 'Submit'
     click_link "VS Computer"
     expect(page).to have_content "Enter coordinates to fire upon"

@@ -26,7 +26,7 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   post "/play" do
-    @coordinates = params[:coordinates]
+    @coordinates = params[:coordinates].capitalize
     erb :game
   end
  
