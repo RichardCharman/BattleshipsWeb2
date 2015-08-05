@@ -5,13 +5,15 @@
   <% else %>
   <b><u>Hello, Player 1. This is your opponents board.</u></b>
   <% end %>
+  <br><br>
+  <%= $game.player_1.shoot @coordinates.to_sym %>
   <pre>
   <%= $game.opponent_board_view($game.player_1) %>
   </pre>
   <p>
     <b><u>Enter coordinates to fire upon Player 2's board</u></b>
   </p>
-  <form action="/playing" method="post" >
+  <form action="/playing" method="post">
     <input type="text" name="coordinates">
     <input type="submit" value="Fire">
   </form>

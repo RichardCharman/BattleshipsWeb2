@@ -18,15 +18,17 @@ feature 'Starting a new game' do
   end
   scenario 'Starts a new game' do
     visit '/play'
-    expect(page).to have_content "This is your board"
+    expect(page).to have_content "Enter coordinates to fire upon"
   end
 end
 feature 'Shooting at opponent board' do
   scenario 'I can enter coordinates' do
     visit '/play'
-    our_coordinates="A1"
-    fill_in "coordinates", with: our_coordinates
+    fill_in "coordinates", with: "A1"
     click_button 'Fire'
-    expect(page).to have_content "You have hit an opponent\'s ship"
+    expect(page).to have_content "hit"
+    fill_in "coordinates", with: "I7"
+    click_button 'Fire'
+    expect(page).to have_content "miss"
   end
 end

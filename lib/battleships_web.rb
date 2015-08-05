@@ -25,9 +25,9 @@ class BattleshipsWeb < Sinatra::Base
     erb :game
   end
 
-  get '/shoot' do
-#    $game.player_1.shoot @coordinates
-    erb :take_a_shot
+  post "/playing" do
+    @coordinates = params[:coordinates]
+    erb :play
   end
  
   # start the server if ruby file executed directly
