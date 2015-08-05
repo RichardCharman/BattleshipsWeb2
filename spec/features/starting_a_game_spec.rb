@@ -21,6 +21,16 @@ feature 'Starting a new game' do
     click_link "VS Computer"
     expect(page).to have_content "Enter coordinates to fire upon"
   end
+  scenario "I can start a game against a human opponent" do
+    visit '/name_set'
+    click_button 'Submit'
+    click_link "PVP"
+    expect(page).to have_content "What is player 2's name?"
+    our_name="Josh"
+    fill_in "name", with: our_name
+    click_button 'Submit'
+    expect(page).to have_content "Player 1 VS #{our_name}"
+  end
 end
 feature 'Playing against opponent' do
   scenario 'I can enter coordinates' do

@@ -1,0 +1,19 @@
+<div>
+  <center>
+    <% if @name %>
+      <% if @name != "" %>
+        <% session[:player2] = @name %>
+      <% else %>
+        <% session[:player2] = "Player 2" %>
+      <% end %>
+      <h2> <%= session[:player1] %> VS <%= session[:player2] %> </h2>
+      
+    <% else %>
+      <h2> What is player 2's name? </h2>
+      <form action="/pvp">
+        <input type="text" name="name">
+        <input type="submit" value ="Submit">
+      </form>
+    <% end %>
+  </center>
+</div>

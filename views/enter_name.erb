@@ -3,10 +3,13 @@
   <% if @name %>
       <% if @name != "" %>
         <b><u>Hello, <%= @name %></u></b>
+        <% session[:player1] = @name %>
       <% else %>
         <b><u>Hello, Player 1</u></b>
+        <% session[:player1] = "Player 1" %>
       <% end %>
-    <a href="/play">VS Computer</a>
+    <br><a href="/play">VS Computer</a>
+    <br><a href="/pvp">PVP</a>
     <% else %>
       <h2> Let's get started - What's your name? </h2>
       <form action="/name_set">
