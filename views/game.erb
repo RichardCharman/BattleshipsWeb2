@@ -9,6 +9,11 @@
    <br><br>
   <%= $game.player_1.shoot @coordinates.to_sym %>
   <% end %>
+    <% if $game.has_winner? %>
+    Congratulations. You win!
+    <br>
+    <a href="/">New Game</a>
+    <% end %>
   <pre>
   <%= $game.opponent_board_view($game.player_1) %>
   </pre>

@@ -24,7 +24,7 @@ feature 'Starting a new game' do
     expect(page).to have_content "Enter coordinates to fire upon"
   end
 end
-feature 'Shooting at opponent board' do
+feature 'Playing against opponent' do
   scenario 'I can enter coordinates' do
     visit '/play'
     fill_in "coordinates", with: "A1"
@@ -33,5 +33,27 @@ feature 'Shooting at opponent board' do
     fill_in "coordinates", with: "I7"
     click_button 'Fire'
     expect(page).to have_content "miss"
+  end
+  scenario 'I can win' do
+    visit '/play'
+    fill_in "coordinates", with: "A1"
+    click_button 'Fire'
+    fill_in "coordinates", with: "B1"
+    click_button 'Fire'
+    fill_in "coordinates", with: "C1"
+    click_button 'Fire'
+    expect(page).to have_content "Congratulations. You win!"
+  end
+  scenario 'I can start a new game after game ended' do
+    visit '/play'
+    fill_in "coordinates", with: "A1"
+    click_button 'Fire'
+    fill_in "coordinates", with: "B1"
+    click_button 'Fire'
+    fill_in "coordinates", with: "C1"
+    click_button 'Fire'
+    expect(page).to have_link "New Game"
+    click_link "New Game"
+    expect(page).to have_content "Are you ready to play Battleships?"
   end
 end

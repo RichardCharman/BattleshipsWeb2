@@ -19,8 +19,7 @@ class BattleshipsWeb < Sinatra::Base
     erb :enter_name
   end
 
-  get '/play' do
-    
+  get '/play' do   
     $game = Game.new Player, Board
     $game.player_2.place_ship Ship.cruiser, :A1
     erb :game
