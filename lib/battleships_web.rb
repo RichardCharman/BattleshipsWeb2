@@ -4,10 +4,10 @@ require "sinatra/session"
 
 class BattleshipsWeb < Sinatra::Base
   # force port 3000 for Nitrous
-  configure :development do
-    set :bind, '0.0.0.0'
-    set :port, 3000
-  end
+#  configure :development do
+#    set :bind, '0.0.0.0'
+#    set :port, 3000
+#  end
 
   enable :sessions
   set :views, proc { File.join(root, '..', 'views') }
