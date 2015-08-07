@@ -61,19 +61,23 @@ class BattleshipsWeb < Sinatra::Base
   end
   
   get '/pvp/play/p1turn' do
+    @turn = 0
     erb :player1
   end
   
   post '/pvp/play/p1turn' do
+    @turn = 1
     @coordinates = params[:coordinates].capitalize
     erb :player1
   end
   
   get '/pvp/play/p2turn' do
+    @turn = 0
     erb :player2
   end
   
   post '/pvp/play/p2turn' do
+    @turn = 1
     @coordinates = params[:coordinates].capitalize
     erb :player2
   end  

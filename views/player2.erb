@@ -2,22 +2,29 @@
   <p><img src='http://4.bp.blogspot.com/-wArMV-IEkb8/VcRlvlBb_-I/AAAAAAAAQtg/cHs-Z9mh1Mc/s1600/battleshipsplayer2.jpg' width="550"></p>
   <p><font size="6" color="red"><strong><u><%= session[:player2] %>'s turn</u></strong></font></p>
   <div style="float: left; width: 300px;"> 
-    <p><font size="4" color="blue"><strong><%= session[:player1] %>'s board</strong></font></p>
     <% if session[:game].has_winner? %>
-      <br> Congratulations <%= session[:player1] %> wins!
+      <br> Congratulations <%= session[:player2] %> wins!
       <br> <a href="/">New Game</a>
-    <% else %>
-      <font size="4"><strong><pre><%= session[:game].opponent_board_view(session[:game].player_2) %></pre></strong></font>
-  </div>
-  <div style="float: left; width: 300px;"> 
-  <p><font size="4"><strong><u>Enter coordinates to fire</u></strong></font></p>
-      <form action="/pvp/play/p1turn" method="post" >
+    <% end %>
+    <% if @turn = 0 %>
+    <p><font size="4"><strong><u>Enter coordinates to fire</u></strong></font></p>
+      <form action="/pvp/play/p2turn" method="post" >
         <input type="text" name="coordinates">
         <input type="submit" value="Fire">
-      </form>
+    </form></p>
     <% end %>
-    <% if @coordinates %> 
-    <br><font size="6" color="blue"><strong><%= session[:player1] %>'s last shot<br />was a <%= session[:game].player_1.shoot @coordinates.to_sym %></strong></font>
-    <% end %>
+    <% if @turn = 1 %>
+       <% if @coordinates %> 
+        <font size="6" color="blue"><strong><%= session[:game].player_2.shoot @coordinates.to_sym %></strong></font>
+        <p><a href='/pvp/play/p1turn'><button type="button">Click for <%=session[:player1]%>'s turn</button></a>
+        <% end %>
+          <% end  %>         
+          
+  </div>
+  <div style="float: left; width: 300px;"> 
+    <p><font size="4" color="blue"><strong><%= session[:player1] %>'s board</strong></font></p>
+    <font size="4"><strong><pre>
+<%= session[:game].opponent_board_view(session[:game].player_2) %>
+      </pre></strong></font>
   </div>
 </div> 
