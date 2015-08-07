@@ -60,10 +60,22 @@ class BattleshipsWeb < Sinatra::Base
     erb :play
   end
   
+  get '/pvp/play/p1turn' do
+    erb :player1
+  end
+  
   post '/pvp/play/p1turn' do
+    @coordinates = params[:coordinates].capitalize
+    erb :player1
+  end
+  
+  get '/pvp/play/p2turn' do
+    erb :player2
   end
   
   post '/pvp/play/p2turn' do
+    @coordinates = params[:coordinates].capitalize
+    erb :player2
   end  
   # start the server if ruby file executed directly
   run! if app_file == $0

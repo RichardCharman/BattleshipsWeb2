@@ -1,0 +1,22 @@
+<div style='width: 700px; height: 600px; border: 3px solid red; text-align:center; margin:0 auto; '>
+  <p><img src='http://1.bp.blogspot.com/-hDO9c3crjNQ/VcJta4MwPEI/AAAAAAAAQrA/FdpJZ1BA_j4/s1600/battleships4.jpg' width="550"></p>
+  <p><font size="6"><strong><u><%= session[:player2] %>'s turn'</u></strong></font></p>
+  <div style="float: left; width: 300px;"> 
+    <% if @coordinates %> 
+    <br><font size="6"><strong><%= session[:game].player_1.shoot @coordinates.to_sym %></strong></font>
+    <% end %><br><br>
+    <% if session[:game].has_winner? %>
+      <br> Congratulations <%= session[:player1] %> wins!
+      <br> <a href="/">New Game</a>
+    <% else %>
+      <pre><%= session[:game].opponent_board_view(session[:game].player_2) %></pre>
+  </div>
+  <div style="float: left; width: 300px;"> 
+  <p><font size="4"><strong><u>Enter coordinates to fire</u></strong></font></p>
+      <form action="/pvp/play/p1turn" method="post" >
+        <input type="text" name="coordinates">
+        <input type="submit" value="Fire">
+      </form>
+    <% end %>
+  </div>
+</div> 
